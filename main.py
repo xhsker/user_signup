@@ -4,9 +4,9 @@ app = Flask(__name__)
 
 app.config['DEBUG'] = True
 
-@app.route('/userid')
-def index():
-    return render_template('userid.html')
+#@app.route('/')
+#def index():
+#    return render_template('userid.html')
 
 
 @app.route("/", methods=['POST', 'GET'])
@@ -66,20 +66,11 @@ def input_verification():
 
         #check each to see if there are errors
         if (not error_name) and (not error_password) and (not error_verify_password) and (not error_email):
-            return redirect('/answer?user_name={0}'.format(user_name))
-
-    return render_template('userid.html', user_name = user_name, user_email = user_email, 
+            return render_template ('finalform.html', user_name = user_name)
+        else:
+             render_template('userid.html', user_name = user_name, user_email = user_email, 
                             error_name = error_name, error_password = error_password, 
                             error_verify_password = error_verify_password, error_email = error_email)
-
-
-    @app.route('/answer')
-    def final_answer():
-        user_name = request.args.get('user_name')
-        return render_template('finalform.html', user_name = user_name)
-
-
-
 
     app.run()
 
