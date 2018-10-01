@@ -35,9 +35,13 @@ def validate_inputs():
                     error_name = "The Username needs to be between 3-20 characters"
                     user_name = ''
 
-            if not user_name:
-                error_name = "Please enter a valid Username"
-                user_name = ""
+        if not user_name:
+            error_name = "Please enter a valid Username"
+            user_name = ""
+
+        if user_name == '':
+            error_name = "Please enter a valid username."
+            user_name = ''
 
 
         #test to see if there are any spaces and that the passwords match
